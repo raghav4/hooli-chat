@@ -2,106 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <title>Hooli Chat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hooli Chat</title>
+  <link rel="shortcut icon" type="image/png" href="./assests/favicon.ico" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+  <link rel="stylesheet" href="/client/styles.css">
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 </head>
 
 <body>
-    <div class="ui action input">
-        <input type="text" placeholder="Enter Your Message">
-        <button class="ui button teal">Submit</button>
+  <div id="mario-chat">
+    <div id="chat-window">
+      <div id="output">
+      </div>
+      <div class="ui input focus">
+        <input id="handle" type="text" placeholder="Handle">
+        <input id="message" type="text" placeholder="Enter Your Message">
+      </div>
+
+      <button class="ui green button" id="send">Send</button>
     </div>
-    <!-- <div class="ui comments">
-        <h3 class="ui dividing header">Comments</h3>
-        <div class="comment">
-          <a class="avatar">
-            <img src="/images/avatar/small/matt.jpg">
-          </a>
-          <div class="content">
-            <a class="author">Matt</a>
-            <div class="metadata">
-              <span class="date">Today at 5:42PM</span>
-            </div>
-            <div class="text">
-              How artistic!
-            </div>
-            <div class="actions">
-              <a class="reply">Reply</a>
-            </div>
-          </div>
-        </div>
-        <div class="comment">
-          <a class="avatar">
-            <img src="/images/avatar/small/elliot.jpg">
-          </a>
-          <div class="content">
-            <a class="author">Elliot Fu</a>
-            <div class="metadata">
-              <span class="date">Yesterday at 12:30AM</span>
-            </div>
-            <div class="text">
-              <p>This has been very useful for my research. Thanks as well!</p>
-            </div>
-            <div class="actions">
-              <a class="reply">Reply</a>
-            </div>
-          </div>
-          <div class="comments">
-            <div class="comment">
-              <a class="avatar">
-                <img src="/images/avatar/small/jenny.jpg">
-              </a>
-              <div class="content">
-                <a class="author">Jenny Hess</a>
-                <div class="metadata">
-                  <span class="date">Just now</span>
-                </div>
-                <div class="text">
-                  Elliot you are always so right :)
-                </div>
-                <div class="actions">
-                  <a class="reply">Reply</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="comment">
-          <a class="avatar">
-            <img src="/images/avatar/small/joe.jpg">
-          </a>
-          <div class="content">
-            <a class="author">Joe Henderson</a>
-            <div class="metadata">
-              <span class="date">5 days ago</span>
-            </div>
-            <div class="text">
-              Dude, this is awesome. Thanks so much
-            </div>
-            <div class="actions">
-              <a class="reply">Reply</a>
-            </div>
-          </div>
-        </div>
-        <form class="ui reply form"><grammarly-extension style="position: absolute; top: 0px; left: 0px; pointer-events: none;"><div data-grammarly-part="highlights" class="u_fNK" style="position: absolute; top: 0px; left: 0px;"><div style="box-sizing: content-box; top: 1px; left: 1px; width: 648px; height: 166px; position: relative; pointer-events: none; overflow: hidden; border: 0px; border-radius: 0px; padding: 0px; margin: 0px;"><div style="position: absolute; top: 0px; left: 0px;"><div style="height: 1000px; width: 2184px;"></div><div style="position: absolute; top: 0px; left: 0px; height: 1000px; width: 2184px;"></div></div></div></div><div data-grammarly-part="button" class="u_fNK" style="position: absolute; top: 0px; left: 0px;"><div style="box-sizing: content-box; top: 1px; left: 1px; width: 648px; height: 166px; position: relative; pointer-events: none; overflow: hidden; border: 0px; border-radius: 0px; padding: 0px; margin: 0px;"><div style="position: absolute; transform: translate(-100%, -100%); top: 155px; left: 634px; width: auto; height: auto; pointer-events: all;"><div style="display: flex; flex-direction: row;"><div><div class="_5WizN _1QzSN"><div class="_3YmQx"><div title="Protected by Grammarly" class="_3QdKe">&nbsp;</div></div></div></div></div></div></div></div></grammarly-extension>
-          <div class="field">
-            <textarea spellcheck="false"></textarea>
-          </div>
-          <div class="ui blue labeled submit icon button">
-            <i class="icon edit"></i> Add Reply
-          </div>
-        </form>
-      </div> -->
+  </div>
+  <script src="main.js"></script>
 </body>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-    const socket = io('http://localhost');
-</script>
 
 </html>
