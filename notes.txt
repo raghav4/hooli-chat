@@ -1,3 +1,0 @@
-Socket is a function which accepts a parameter of server.
-io will listen up to the event called 'connection' , it's connection that is being made using the browser.
-Each client connected to the server will have their own socket.
