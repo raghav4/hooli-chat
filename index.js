@@ -15,8 +15,12 @@ const server = app.listen(PORT, (err) => {
 const io = socket(server);
 io.on('connection', (socket) => {
     console.log('Socket Connection Established...', socket.id); //request.connection._peername
-    
+
+    //Handling for the Chat
     socket.on('send', (data) => {
         io.sockets.emit('send', data);
+    });
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', data);
     });
 });
