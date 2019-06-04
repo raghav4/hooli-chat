@@ -1,7 +1,6 @@
 {
     "version": 2,
     "name": "Hooli-Chat",
-    "alias": ["https://hooli.now.sh"],
     "builds": [
         { "src": "*.js", "use": "@now/node-server" }
     ]
